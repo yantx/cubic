@@ -3,7 +3,7 @@ package com.matrix.proxy.vo;
 import com.cubic.proxy.common.module.PageQuery;
 import lombok.Data;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 /**
  * @Author qinqixuan
@@ -38,6 +38,6 @@ public class ThreadDumpVo extends PageQuery {
 	/**
 	 * 创建日期
 	 */
-	private Date createTime;
+	private LocalDateTime createTime;
 
 }

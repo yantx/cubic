@@ -52,10 +52,9 @@
         </dependency>
 
         <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
         </dependency>
-
         <!-- 通用mapper -->
         <dependency>
             <groupId>com.baomidou</groupId>

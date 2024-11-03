@@ -49,7 +49,7 @@ public class ThreadDumpServiceImpl implements ThreadDumpService {
     @Override
     public String getThreadDumpByAppId(String appId, String time) {
         QueryWrapper<ThreadDump> wrapper = new QueryWrapper<>();
-        wrapper.eq("app_id", appId).apply("date_format(create_time,'%Y-%m-%d %H:%i') = '" + time + " '");
+        wrapper.eq("app_id", appId).apply("to_char(create_time,'YYYY-MM-DD HH24:MI') = '" + time + " '");
         ThreadDump threadDump = threadDumpMapper.selectOne(wrapper);
         return threadDump == null ? "" : GzipUtils.decompress(threadDump.getThreadDump());
     }

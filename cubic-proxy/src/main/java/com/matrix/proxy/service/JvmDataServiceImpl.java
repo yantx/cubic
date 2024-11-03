@@ -44,7 +44,7 @@ public class JvmDataServiceImpl implements JvmDataService {
         QueryWrapper queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("instance_name", appId[0]);
         queryWrapper.eq("instance_id", appId[1]);
-        queryWrapper.apply("date_format(create_time,'%Y-%m-%d %H:%i') = '" + time + "'");
+        queryWrapper.apply("to_char(create_time,'YYYY-MM-DD HH24:MI') = '" + time + "'");
         List<ThreadPool> poolEntities = threadPoolMapper.selectList(queryWrapper);
 
         List<ThreadPoolVo> vos = new ArrayList<>();

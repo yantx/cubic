@@ -37,6 +37,7 @@ public class AppDataServiceImpl implements AppDataService {
 
     @Resource
     private ServerProperties serverProperties;
+
     /**
      * 获取应用实例列表
      *
@@ -44,14 +45,7 @@ public class AppDataServiceImpl implements AppDataService {
      */
     @Override
     public Map getAppList(String date) {
-
-        Calendar nowTime = Calendar.getInstance();
-        nowTime.add(Calendar.MINUTE, -5);
-        Date curr = nowTime.getTime();
-
-        if (StringUtils.isNotEmpty(date)) {
-            curr = DateUtils.stringToDate(date);
-        }
+        LocalDateTime curr = StringUtils.isNotEmpty(date) ? LocalDateTime.parse(date, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")) : LocalDateTime.now().minusMinutes(5);
 
         Map<String, Object> result = new HashMap<>(16);
         List<Information> datas = informationMapper.selectInstanceByLastHeartbeat(curr);
@@ -83,8 +77,8 @@ public class AppDataServiceImpl implements AppDataService {
         datas.forEach(base -> {
             BasicInformationVo vo = BasicInformationVo.builder().build();
             BeanUtils.copyProperties(base, vo, "state", "online", "startDate", "lastHeartbeat");
-            LocalDateTime start = LocalDateTime.ofInstant(base.getStartDate().toInstant(), DateUtils.ASIA_SHANGHAI);
-            LocalDateTime lastHeart = LocalDateTime.ofInstant(base.getLastHeartbeat().toInstant(), DateUtils.ASIA_SHANGHAI);
+            LocalDateTime start = base.getStartDate();
+            LocalDateTime lastHeart = base.getLastHeartbeat();
             String startTime = start.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
             vo.setStartDate(startTime);
             String heart = DateUtils.calculateTime(lastHeart);

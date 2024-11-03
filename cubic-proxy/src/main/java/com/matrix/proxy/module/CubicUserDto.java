@@ -18,7 +18,7 @@ package com.matrix.proxy.module;
 
 import lombok.Data;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 /**
  * 实体类
@@ -53,6 +53,6 @@ public class CubicUserDto {
     /**
      * 创建时间
      */
-    private Date createTime;
+    private LocalDateTime createTime;
 
 }

@@ -3,7 +3,7 @@ package com.matrix.proxy.mapper;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.matrix.proxy.entity.ThreadDump;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**

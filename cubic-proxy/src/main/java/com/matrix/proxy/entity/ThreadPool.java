@@ -10,7 +10,7 @@ import lombok.experimental.Tolerate;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 /**
  * app线程池采集数据对象
@@ -40,7 +40,7 @@ public class ThreadPool {
     private String threadPoolParams;
 
     @TableField(value = "create_time")
-    private Date createTime;
+    private LocalDateTime createTime;
 
     @Tolerate
     public ThreadPool() {

@@ -61,7 +61,7 @@ CREATE TABLE `cubic_rely_information`
     `app_id`       varchar(64) COLLATE utf8mb4_unicode_ci  DEFAULT NULL COMMENT '实例唯一id',
     `jar_name`     varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'jar包名称',
     `service_name` varchar(50) COLLATE utf8mb4_unicode_ci  DEFAULT NULL COMMENT '应用名称',
-    `create_date`  datetime                                DEFAULT NULL COMMENT '创建时间',
+    `create_time`  datetime                                DEFAULT NULL COMMENT '创建时间',
     PRIMARY KEY (`id`),
     KEY `uuid` (`app_id`) USING BTREE COMMENT 'uuid'
 ) ENGINE = InnoDB

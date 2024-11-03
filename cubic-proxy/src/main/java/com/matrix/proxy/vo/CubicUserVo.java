@@ -19,7 +19,7 @@ package com.matrix.proxy.vo;
 import com.cubic.proxy.common.module.PageQuery;
 import lombok.Data;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 /**
  * 实体类
@@ -53,6 +53,6 @@ public class CubicUserVo extends PageQuery {
     /**
      * 创建时间
      */
-    private Date createTime;
+    private LocalDateTime createTime;
 
 }

@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 /**
  * 处理线程池信息
@@ -54,7 +54,7 @@ public class JvmThreadPoolProcess extends DefaultMessageProcess {
             logger.error("反序列化线程池监控数据出错：", e);
             return;
         }
-        Date date = Date.from(LocalDateTime.now().atZone(ZoneId.systemDefault()).toInstant());
+        LocalDateTime date = LocalDateTime.now();
         body.getThreadPoolMetricMap().forEach((key, params) -> {
             threadPoolMapper.insert(ThreadPool.builder()
                     .instanceId(message.getInstanceUuid())

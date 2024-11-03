@@ -17,7 +17,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import javax.transaction.Transactional;
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -49,7 +49,7 @@ public class ProxyHeartbeatProcessor extends DefaultMessageProcess {
     }
 
     public void updateHeardBeat(String instanceId) {
-        Information information = Information.builder().lastHeartbeat(new Date()).build();
+        Information information = Information.builder().lastHeartbeat(LocalDateTime.now()).build();
         UpdateWrapper<Information> updateWrapper = new UpdateWrapper<>();
         updateWrapper.eq("instance_id",instanceId);
         InformationMapper.update(information,updateWrapper);

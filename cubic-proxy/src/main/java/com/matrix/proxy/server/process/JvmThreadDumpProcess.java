@@ -14,7 +14,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 /**
  * 接受app线程栈信息并处理
@@ -63,7 +63,7 @@ public class JvmThreadDumpProcess extends DefaultMessageProcess{
 				.instanceId(threadMetric.getInstanceUUID())
 				.instanceName(threadMetric.getServiceName())
 				.threadDump(GzipUtils.compress(threadMetric.getThreadDump()))
-				.createTime(new Date())
+				.createTime(LocalDateTime.now())
 				.build();
 		threadDumpMapper.insert(threadDump);
 	}

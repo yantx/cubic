@@ -10,7 +10,7 @@ import lombok.experimental.Tolerate;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 /**
  * 应用注册信息
@@ -82,13 +82,13 @@ public class Information {
      * 最后心跳
      */
     @TableField(value = "last_heartbeat")
-    private Date lastHeartbeat;
+    private LocalDateTime lastHeartbeat;
 
     /**
      * 启动时间
      */
     @TableField(value = "start_date")
-    private Date startDate;
+    private LocalDateTime startDate;
 
     @TableField(value = "jdk_version")
     private String jdkVersion;

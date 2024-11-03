@@ -39,8 +39,7 @@
     SELECT jars FROM cubic_information   where  app_id = #{appId}
   </select>
 
-  <select id="selectInstanceIdByNames" resultType="java.lang.String">
-    SELECT instance_id  FROM cubic_information   where  instance_name = #{instanceName} and last_heartbeat > #{date}
+  <select id="selectInstanceIdByName" resultType="java.lang.String">
+    SELECT instance_id  FROM cubic_information where  instance_name = #{instanceName} and last_heartbeat > #{date}
   </select>
-
 </mapper>

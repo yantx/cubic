@@ -5,7 +5,7 @@ import lombok.Data;
 import lombok.experimental.Tolerate;
 import org.springframework.data.annotation.Id;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 /**
  * 记录异常日志信息
@@ -46,13 +46,13 @@ public class ThreadPoolLog {
 	private String details;
 
 
-	private Date clearUpDate;
+	private LocalDateTime clearUpDate;
 
 
 	/**
 	 * 创建日期
 	 */
-	private Date createDate;
+	private LocalDateTime createTime;
 
 
 	@Tolerate

@@ -2,7 +2,7 @@ package com.matrix.proxy.vo;
 
 import lombok.Data;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 /**
  * 线程池查询条件
@@ -23,8 +23,8 @@ public class ThreadPoolQueryVo {
 
     private String threadPoolKey;
 
-    private Date startTime;
+    private LocalDateTime startTime;
 
-    private Date endTime;
+    private LocalDateTime endTime;
 
 }

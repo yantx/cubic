@@ -10,7 +10,7 @@ import lombok.experimental.Tolerate;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 /**
  * @Author qinqixuan
@@ -40,7 +40,7 @@ public class ThreadDump {
 	private String threadDump;
 
 	@TableField(value = "create_time")
-	private Date createTime;
+	private LocalDateTime createTime;
 
 	@Tolerate
 	public ThreadDump() {

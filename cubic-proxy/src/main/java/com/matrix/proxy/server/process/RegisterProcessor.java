@@ -16,6 +16,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.time.LocalDateTime;
 import java.util.*;
 
 /**
@@ -66,7 +67,7 @@ public class RegisterProcessor extends DefaultMessageProcess {
         String info = osInfo.get("jvm_info");
 
         JSONObject jvmInfo = JSON.parseObject(info);
-        builder.appId(id).startDate(new Date()).progress(osInfo.get("process_no")).host(osInfo.get("host_name"))
+        builder.appId(id).startDate(LocalDateTime.now()).progress(osInfo.get("process_no")).host(osInfo.get("host_name"))
                 .ip(osInfo.get("ipv4")).language(osInfo.get("language")).os(osInfo.get("os_name"))
                 .jdkVersion(jvmInfo.getString("version")).jdkDir(jvmInfo.getString("jvmHome")).userDir(jvmInfo.getString("userDir"));
 

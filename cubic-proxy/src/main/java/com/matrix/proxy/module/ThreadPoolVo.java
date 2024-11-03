@@ -12,7 +12,7 @@ import lombok.experimental.Tolerate;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 /**
  * app线程池采集数据对象
@@ -49,7 +49,7 @@ public class ThreadPoolVo implements Serializable {
     private String largestPoolSize;
 
     @JsonFormat
-    private Date createTime;
+    private LocalDateTime createTime;
 
     @Tolerate
     public ThreadPoolVo() {

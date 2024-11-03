@@ -5,7 +5,7 @@ import lombok.Data;
 import lombok.experimental.Tolerate;
 import org.springframework.data.annotation.Id;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 /**
  * 记录线程某一时刻信息
@@ -62,13 +62,13 @@ public class ThreadDetailsLog {
 	 */
 	private String cpuTime;
 
-	private Date clearUpDate;
+	private LocalDateTime clearUpDate;
 
 
 	/**
 	 * 创建日期
 	 */
-	private Date createDate;
+	private LocalDateTime createTime;
 
 
 	@Tolerate

@@ -10,7 +10,7 @@ import lombok.experimental.Tolerate;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 /**
  * 依赖数据
@@ -49,8 +49,8 @@ public class RelyInformation {
     @TableField(value = "jar_name")
     private String jarName;
 
-    @TableField(value = "create_date")
-    private Date createDate;
+    @TableField(value = "create_time")
+    private LocalDateTime createTime;
 
 
     @Tolerate
