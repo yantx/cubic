@@ -1,6 +1,8 @@
 spring:
   application:
     name: cubic-proxy
+  main:
+    allow-circular-references: true
   profiles:
     active: dev
   jackson:
@@ -9,12 +11,12 @@ spring:
     default-property-inclusion: non_null
   datasource:
     name: test
-    url: jdbc:mysql://${cubic_db_host:localhost}:${cubic_db_port:3306}/${cubic_db_name:cubic}?useUnicode=true&characterEncoding=UTF8&serverTimezone=Asia/Shanghai
-    username: ${cubic_db_user:root}
-    password: ${cubic_db_password:root}
+    url: jdbc:postgresql://${cubic_db_host:192.168.1.6}:${cubic_db_port:5432}/${cubic_db_name:cubic}
+    username: ${cubic_db_user:postgres}
+    password: ${cubic_db_password:123456}
     # 使用druid数据源
     type: com.zaxxer.hikari.HikariDataSource
-    driver-class-name: com.mysql.cj.jdbc.Driver
+    driver-class-name: org.postgresql.Driver
     hikari:
       auto-commit: true
       maximum-pool-size: 20
