@@ -14,9 +14,9 @@
     <properties>
 <!--        <skip_maven_deploy>false</skip_maven_deploy>-->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <grpc.protobuf.version>1.32.1</grpc.protobuf.version>
-        <protoc-gen-grpc-java.plugin.version>1.32.1</protoc-gen-grpc-java.plugin.version>
-        <com.google.protobuf.protoc.version>3.12.0</com.google.protobuf.protoc.version>
+        <grpc.protobuf.version>1.68.0</grpc.protobuf.version>
+        <protoc-gen-grpc-java.plugin.version>1.68.0</protoc-gen-grpc-java.plugin.version>
+        <com.google.protobuf.protoc.version>3.18.0</com.google.protobuf.protoc.version>
         <com.googlecode.protobuf-java-format.version>1.4</com.googlecode.protobuf-java-format.version>
     </properties>
 
