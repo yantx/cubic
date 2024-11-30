@@ -51,7 +51,20 @@ public enum CommandCode {
     /**
      * JVM 线程池信息
      */
-    JVM_THREAD_POOL(8);
+    JVM_THREAD_POOL(8),
+    /**
+     * JVM 堆&非堆内存
+     */
+    JVM_MEMORY(9),
+    /**
+     * JVM 垃圾回收
+     */
+    JVM_GC(10),
+
+    /**
+     * druid连接池
+     */
+    DRUID_POOL(11);
 
     private final Integer code;
 

@@ -2,3 +2,6 @@ com.cubic.agent.core.remote.AgentClientManager
 com.cubic.agent.core.remote.ServiceRegisterClient
 com.cubic.agent.core.cmd.jvm.thread.JvmThreadService
 com.cubic.agent.core.cmd.jvm.threadpool.ThreadPoolService
+com.cubic.agent.core.jmx.jvm.dbpool.DruidPoolService
+com.cubic.agent.core.jmx.jvm.gc.JvmGCService
+com.cubic.agent.core.jmx.jvm.memory.JvmMemoryService
