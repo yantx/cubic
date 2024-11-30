@@ -14,7 +14,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
+import java.util.Base64;
 
 /**
  * 接受app线程栈信息并处理
@@ -62,7 +64,7 @@ public class JvmThreadDumpProcess extends DefaultMessageProcess{
 				.appId(appId)
 				.instanceId(threadMetric.getInstanceUUID())
 				.instanceName(threadMetric.getServiceName())
-				.threadDump(GzipUtils.compress(threadMetric.getThreadDump()))
+				.threadDump(Base64.getEncoder().encodeToString(GzipUtils.compress(threadMetric.getThreadDump()).getBytes(StandardCharsets.ISO_8859_1)))
 				.createTime(LocalDateTime.now())
 				.build();
 		threadDumpMapper.insert(threadDump);

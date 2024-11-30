@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
 
@@ -14,7 +15,7 @@ import java.util.zip.GZIPOutputStream;
  * @author luqiang
  */
 public class GzipUtils {
-    private static Logger logger = LoggerFactory.getLogger(GzipUtils.class);
+    private static final Logger logger = LoggerFactory.getLogger(GzipUtils.class);
 
     /**
      * 压缩字符串
@@ -30,8 +31,8 @@ public class GzipUtils {
         try {
             ByteArrayOutputStream outputStream = compressToStream(body);
             if (outputStream != null) {
-                // 通过解码字节将缓冲区内容转换为字符串
-                return new String(outputStream.toByteArray(), "ISO-8859-1");
+                // 通过解码字节将缓冲区内容转换为字符串 ,StandardCharsets.ISO_8859_1
+                return new String(outputStream.toByteArray(), StandardCharsets.ISO_8859_1);
             }
 
         } catch (Exception e) {
@@ -81,9 +82,9 @@ public class GzipUtils {
         byte[] buf = new byte[1024];
         int len = 0;
         try (
-                ByteArrayInputStream bis = new ByteArrayInputStream(body.getBytes("ISO-8859-1"));
+                ByteArrayInputStream bis = new ByteArrayInputStream(body.getBytes(StandardCharsets.ISO_8859_1));
                 ByteArrayOutputStream bos = new ByteArrayOutputStream();
-                GZIPInputStream is = new GZIPInputStream(bis);
+                GZIPInputStream is = new GZIPInputStream(bis)
         ) {
             // 将未压缩数据读入字节数组
             while ((len = is.read(buf)) != -1) {
@@ -91,7 +92,7 @@ public class GzipUtils {
                 bos.write(buf, 0, len);
             }
             // 通过解码字节将缓冲区内容转换为字符串
-            return new String(bos.toByteArray());
+            return new String(bos.toByteArray(),StandardCharsets.ISO_8859_1);
         } catch (Exception e) {
             logger.warn("GZIP 解压失败，使用源文件", e);
             return body;

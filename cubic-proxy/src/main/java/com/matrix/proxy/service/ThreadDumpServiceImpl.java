@@ -18,10 +18,8 @@ import org.springframework.util.CollectionUtils;
 import javax.annotation.Resource;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.nio.charset.StandardCharsets;
+import java.util.*;
 
 /**
  * 处理线程栈信息展示
@@ -51,7 +49,7 @@ public class ThreadDumpServiceImpl implements ThreadDumpService {
         QueryWrapper<ThreadDump> wrapper = new QueryWrapper<>();
         wrapper.eq("app_id", appId).apply("to_char(create_time,'YYYY-MM-DD HH24:MI') = '" + time + " '");
         ThreadDump threadDump = threadDumpMapper.selectOne(wrapper);
-        return threadDump == null ? "" : GzipUtils.decompress(threadDump.getThreadDump());
+        return threadDump == null ? "" : GzipUtils.decompress(new String(Base64.getDecoder().decode(threadDump.getThreadDump()), StandardCharsets.ISO_8859_1));
     }
 
     /**
@@ -79,7 +77,7 @@ public class ThreadDumpServiceImpl implements ThreadDumpService {
         datas.getRecords().forEach(user -> {
             ThreadDumpVo dto = new ThreadDumpVo();
             copier.copy(user, dto, null);
-            dto.setThreadDump(GzipUtils.decompress(user.getThreadDump()));
+            dto.setThreadDump(GzipUtils.decompress(new String(Base64.getDecoder().decode(user.getThreadDump()), StandardCharsets.ISO_8859_1)));
             result.add(dto);
         });
 
@@ -101,7 +99,7 @@ public class ThreadDumpServiceImpl implements ThreadDumpService {
         if (threadDump == null) {
             return new HashMap();
         }
-        String dumpFile = GzipUtils.decompress(threadDump.getThreadDump());
+        String dumpFile = GzipUtils.decompress(new String(Base64.getDecoder().decode(threadDump.getThreadDump()), StandardCharsets.ISO_8859_1));
        return DumpParserFactory.get().getDumpParser(dumpFile);
     }
 
